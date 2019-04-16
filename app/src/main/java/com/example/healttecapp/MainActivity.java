@@ -12,5 +12,6 @@ public class MainActivity extends AppCompatActivity {
         // Kukkuu tämä on testi
         // jooo
         String koodi = "mitä vittuu";
+        String lisaa = "testi";
     }
 }
