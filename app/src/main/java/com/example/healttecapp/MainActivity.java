@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
         // jooo
         String koodi = "mitä vittuu";
         String lisaa = "testi";
-        String joku = "moro";
+
     }
 }
