@@ -6,4 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainEemeliActivity">
 
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tokan activityn sisältöä.."
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="109dp" />
+
 </android.support.constraint.ConstraintLayout>
