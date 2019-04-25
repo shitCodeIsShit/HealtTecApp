@@ -20,6 +20,7 @@
 
     <SeekBar
         android:id="@+id/SeekBarUrheilu"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="0dp"
         android:layout_height="78dp"
         android:layout_marginStart="57dp"
@@ -28,6 +29,7 @@
         android:layout_marginRight="57dp"
         android:max="4"
         android:progress="1"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
