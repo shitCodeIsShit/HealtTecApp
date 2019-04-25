@@ -2,4 +2,5 @@
     <string name="app_name">HealtTecApp</string>
     <string name="PeruutaButtonUrheilu">Peruuta</string>
     <string name="TallennaButtonUrheilu">Tallenna</string>
+    <string name="UrheiluInfo">Arvioi päivän fyysinen aktiivisuutesi asteikolla 1-5.</string>
 </resources>

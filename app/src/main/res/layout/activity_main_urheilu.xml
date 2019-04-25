@@ -8,12 +8,16 @@
 
 
     <TextView
-        android:id="@+id/textViewUrheilu"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewUrheilu1"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
-        android:text="Urheilu view"
-        android:textSize="50sp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="Päivän aktiivisuus"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,6 +48,8 @@
         android:layout_marginTop="179dp"
         android:layout_marginBottom="177dp"
         android:text="@string/PeruutaButtonUrheilu"
+        android:textSize="20sp"
+        android:padding="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/SeekBarUrheilu" />
@@ -55,8 +61,22 @@
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
         android:text="@string/TallennaButtonUrheilu"
+        android:textSize="20sp"
+        android:padding="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/PeruutaButtonUrheilu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/PeruutaButtonUrheilu" />
+
+    <TextView
+        android:id="@+id/textViewUrheilu2"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/UrheiluInfo"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUrheilu1" />
 
 </android.support.constraint.ConstraintLayout>
