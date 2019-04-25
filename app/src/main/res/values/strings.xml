@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HealtTecApp</string>
+    <string name="PeruutaButtonUrheilu">Peruuta</string>
+    <string name="TallennaButtonUrheilu">Tallenna</string>
 </resources>
