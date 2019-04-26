@@ -16,8 +16,10 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:layout_marginBottom="132dp"
         android:text="Päivän aktiivisuus"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewProgress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +34,9 @@
         android:layout_marginEnd="57dp"
         android:layout_marginRight="57dp"
         android:max="4"
+        android:padding="3sp"
         android:progress="1"
+        android:thumb="@android:drawable/ic_menu_send"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,9 +51,9 @@
         android:layout_marginLeft="64dp"
         android:layout_marginTop="179dp"
         android:layout_marginBottom="177dp"
+        android:padding="18sp"
         android:text="@string/PeruutaButtonUrheilu"
         android:textSize="20sp"
-        android:padding="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/SeekBarUrheilu" />
@@ -60,9 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
+        android:padding="18sp"
         android:text="@string/TallennaButtonUrheilu"
         android:textSize="20sp"
-        android:padding="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/PeruutaButtonUrheilu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/PeruutaButtonUrheilu" />
@@ -76,6 +80,22 @@
         android:layout_marginTop="32dp"
         android:text="@string/UrheiluInfo"
         android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUrheilu1" />
+
+    <TextView
+        android:id="@+id/textViewProgress"
+        android:layout_width="171dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="428dp"
+        android:text="@string/TextViewProgress"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewUrheilu1" />
 
