@@ -2,6 +2,10 @@
     <string name="app_name">HealtTecApp</string>
     <string name="PeruutaButtonUrheilu">Peruuta</string>
     <string name="TallennaButtonUrheilu">Tallenna</string>
-    <string name="UrheiluInfo">Arvioi päivän fyysinen aktiivisuutesi asteikolla 1-5.</string>
+    <string name="UrheiluInfo">1=Ei lähes ollenkaan liikkumista
+                               2=Melko vähän liikkumista
+                               3=Jonkin verran liikkumista
+                                4=Paljon liikkumista
+                                 5=Erittäin paljon liikkumista</string>
     <string name="TextViewProgress">jokuarvo</string>
 </resources>
