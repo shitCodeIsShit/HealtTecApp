@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import static com.example.mysqldatabasetest2.ActivityDatabaseAdapter.TABLE_NAME;
+import static com.example.healttecapp.ActivityDatabaseAdapter.TABLE_NAME;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 

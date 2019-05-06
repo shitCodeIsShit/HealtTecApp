@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.kello.R;
+
 import java.util.ArrayList;
 import java.util.List;
 

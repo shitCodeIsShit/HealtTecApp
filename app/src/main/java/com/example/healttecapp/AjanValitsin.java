@@ -1,4 +1,4 @@
-package com.example.kello;
+package com.example.healttecapp;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
