@@ -24,15 +24,6 @@ int minuutit;
         setContentView(R.layout.activity_aika);
 
         Button button = findViewById(R.id.button);
-        Button button6 = findViewById(R.id.button6);
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityDatabaseAdapter.insertSleepScore(aika2);
-                openMain();
-
-            }
-        });
         button.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -42,6 +33,8 @@ int minuutit;
             }
         });
     }
+
+
     public void openMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -56,8 +49,12 @@ int minuutit;
         this.aika2 = Math.round(this.tunnit + this.minuutit);
 
 
-
-
+    }
+    public void tunnitKantaan(View v){
+        TextView textView = findViewById(R.id.textView);
+        ActivityDatabaseAdapter.insertSleepScore(aika2);
+        Intent takaisin = new Intent (MainKelloActivity.this, MainActivity.class);
+        MainKelloActivity.this.startActivity(takaisin);
     }
 
 }
