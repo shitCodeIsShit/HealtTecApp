@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.kello.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,15 +34,29 @@ public class MainActivity extends AppCompatActivity {
                 openUrheiluActivity();
             }
         });
+        button4 = findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRuokailu();
+            }
+        });
+
+
     }
     public void openKello() {
-        Intent intent = new Intent(this, MainKelloActivity.class);
-        startActivity(intent);
+        Intent intentKello = new Intent(this, MainKelloActivity.class);
+        startActivity(intentKello);
     }
 
     public void openUrheiluActivity() {
-        Intent intent = new Intent(this, MainUrheiluActivity.class);
-        startActivity(intent);
+        Intent intentUrheilu = new Intent(this, MainUrheiluActivity.class);
+        startActivity(intentUrheilu);
+    }
+
+    public void openRuokailu(){
+        Intent intentRuokailu = new Intent (this, AddFoodMenyActivity.class);
+        startActivity(intentRuokailu);
     }
 }
 

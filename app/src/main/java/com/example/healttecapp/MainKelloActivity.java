@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.kello.R;
+
 
 public class MainKelloActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 

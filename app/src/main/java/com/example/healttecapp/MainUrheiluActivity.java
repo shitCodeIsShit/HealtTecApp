@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.kello.R;
 
 public class MainUrheiluActivity extends AppCompatActivity {
 

@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.kello.R;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,6 @@ public class AddFoodMenyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food_meny);
 
-        saveButton = findViewById(R.id.saveButton);
 
         // Creating first spinner
         Spinner foodSpinner = findViewById(R.id.eatingTimeSpinner);
