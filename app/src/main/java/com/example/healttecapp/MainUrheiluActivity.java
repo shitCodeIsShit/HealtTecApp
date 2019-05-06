@@ -18,6 +18,8 @@ public class MainUrheiluActivity extends AppCompatActivity {
         SeekBar seekBar = findViewById(R.id.SeekBarUrheilu);
         final TextView textView = findViewById(R.id.textViewUrheiluArvo);
         Button PeruutaButtonUrheilu = findViewById(R.id.PeruutaButtonUrheilu);
+        Button TallennaButtonUrheilu = findViewById(R.id.TallennaButtonUrheilu);
+
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
