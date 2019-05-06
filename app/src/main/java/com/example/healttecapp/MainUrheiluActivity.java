@@ -39,7 +39,15 @@ public class MainUrheiluActivity extends AppCompatActivity {
         });
 
         String arvo = String.valueOf(textViewUrheiluArvo);
-        int numeroarvo = Integer.parseInt(arvo);
+        final int seekbaarinnumeroarvo = Integer.parseInt(arvo);
+
+        TallennaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityDatabaseAdapter.insertActivityScore(seekbaarinnumeroarvo);
+            }
+        });
+
 
         PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
             @Override
