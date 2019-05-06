@@ -14,7 +14,7 @@ import android.widget.TimePicker;
 
 public class MainKelloActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 double aika;
-int aika2;
+public int aika2;
 int tunnit;
 int minuutit;
 
@@ -51,7 +51,6 @@ int minuutit;
 
     }
     public void tunnitKantaan(View v){
-        TextView textView = findViewById(R.id.textView);
         ActivityDatabaseAdapter.insertSleepScore(aika2);
         Intent takaisin = new Intent (MainKelloActivity.this, MainActivity.class);
         MainKelloActivity.this.startActivity(takaisin);
