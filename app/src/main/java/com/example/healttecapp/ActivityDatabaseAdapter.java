@@ -230,11 +230,7 @@ public class ActivityDatabaseAdapter {
 
         // Last but not least you check that the day is some as db.Day
         // Tip! There is a +1 on month because calendar maths start at 0 and dbMonth dose not
-        if (curentTime.get(Calendar.YEAR) == year && curentTime.get(Calendar.MONTH) + 1 == month && curentTime.get(Calendar.DATE) == day) {
-            return true;
-        }
-
-        return false;
+        return curentTime.get(Calendar.YEAR) == year && curentTime.get(Calendar.MONTH) + 1 == month && curentTime.get(Calendar.DATE) == day;
 
     }
 

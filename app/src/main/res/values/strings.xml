@@ -8,4 +8,5 @@
                                 4=Paljon liikkumista
                                  5=Erittäin paljon liikkumista</string>
     <string name="TextViewProgress">jokuarvo</string>
+    <string name="aika">Aika</string>
 </resources>
