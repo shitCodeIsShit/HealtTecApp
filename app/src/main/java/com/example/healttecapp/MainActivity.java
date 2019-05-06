@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityDatabaseAdapter activityDatabaseAdapter;
     private Button button3;
     private Button button2;
     private Button button4;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        activityDatabaseAdapter = new ActivityDatabaseAdapter(getApplicationContext());
 
         button2 = findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {

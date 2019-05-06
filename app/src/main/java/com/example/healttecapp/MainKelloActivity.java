@@ -48,6 +48,8 @@ int minuutit;
         this.aika = this.tunnit + this.minuutit;
         this.aika2 = Math.round(this.tunnit + this.minuutit);
 
+        System.out.println("----------------" + aika2 + "------------- aika2");
+
 
     }
     public void tunnitKantaan(View v){
