@@ -13,6 +13,10 @@ import android.widget.TimePicker;
 
 
 public class MainKelloActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+double aika;
+int aika2;
+int tunnit;
+int minuutit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +28,7 @@ public class MainKelloActivity extends AppCompatActivity implements TimePickerDi
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ActivityDatabaseAdapter.insertSleepScore(aika2);
                 openMain();
 
             }
@@ -46,8 +50,16 @@ public class MainKelloActivity extends AppCompatActivity implements TimePickerDi
     public void onTimeSet(TimePicker view, int tunnit, int minuutit) {
         TextView textView = findViewById(R.id.textView);
         textView.setText("Tunteja: " + tunnit + " Minuutteja: " + minuutit);
+        this.tunnit = tunnit;
+        this.minuutit = minuutit / 60;
+        this.aika = this.tunnit + this.minuutit;
+        this.aika2 = Math.round(this.tunnit + this.minuutit);
+
+
+
 
     }
+
 }
 
 
