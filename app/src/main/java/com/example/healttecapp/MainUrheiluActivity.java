@@ -16,7 +16,8 @@ public class MainUrheiluActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_urheilu);
 
-        SeekBar seekBar = findViewById(R.id.SeekBarUrheilu);
+        SeekBar seekBar;
+        seekBar = findViewById(R.id.SeekBarUrheilu);
         final TextView textViewUrheiluArvo = findViewById(R.id.textViewUrheiluArvo);
         Button PeruutaButtonUrheilu = findViewById(R.id.PeruutaButtonUrheilu);
         Button TallennaButtonUrheilu = findViewById(R.id.TallennaButtonUrheilu);
