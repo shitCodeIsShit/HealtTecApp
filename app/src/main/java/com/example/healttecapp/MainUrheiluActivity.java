@@ -16,7 +16,7 @@ public class MainUrheiluActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_urheilu);
 
         SeekBar seekBar = findViewById(R.id.SeekBarUrheilu);
-        final TextView textView = findViewById(R.id.textViewUrheiluArvo);
+        final TextView textViewUrheiluArvo = findViewById(R.id.textViewUrheiluArvo);
         Button PeruutaButtonUrheilu = findViewById(R.id.PeruutaButtonUrheilu);
         Button TallennaButtonUrheilu = findViewById(R.id.TallennaButtonUrheilu);
 
@@ -24,7 +24,7 @@ public class MainUrheiluActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textView.setText(String.valueOf(progress+1));
+                textViewUrheiluArvo.setText(String.valueOf(progress+1));
             }
 
             @Override
@@ -37,6 +37,9 @@ public class MainUrheiluActivity extends AppCompatActivity {
 
             }
         });
+
+        String arvo = String.valueOf(textViewUrheiluArvo);
+        int numeroarvo = Integer.parseInt(arvo);
 
         PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
             @Override
