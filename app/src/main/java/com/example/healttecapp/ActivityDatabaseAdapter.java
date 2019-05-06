@@ -96,6 +96,40 @@ public class ActivityDatabaseAdapter {
 
     public static void insertSleepScore(int score) {
 
+        // Check if adding day is some as last day database
+        if (checkIfDayIsSome()) {
+
+            String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
+
+            db = dbHelper.getReadableDatabase();
+            Cursor cursor = db.rawQuery(query, null);
+
+            String asd = "";
+            String id = ID + "=";
+
+            if (cursor.moveToNext()) {
+                do {
+                    id += cursor.getString(0);
+                    asd += cursor.getString(3);
+                } while (cursor.moveToNext());
+            }
+
+            if (asd.trim().equals("null")) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(ACTIVITY_SCORE, score);
+
+                // Adding also score to total points
+                addToTotalPoints(score);
+
+                // Inserting row to a table
+                db = dbHelper.getWritableDatabase();
+                long result = db.update(TABLE_NAME, contentValues, id, null);
+                db.close();
+            }
+
+            cursor.close();
+
+        }
 
     }
 
