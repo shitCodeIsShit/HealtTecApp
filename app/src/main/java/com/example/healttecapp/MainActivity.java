@@ -50,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
                 openRuokailu();
             }
         });
+        button5 = findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTiedot();
+            }
+        });
 
 
     }
@@ -66,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
     public void openRuokailu(){
         Intent intentRuokailu = new Intent (this, AddFoodMenyActivity.class);
         startActivity(intentRuokailu);
+    }
+
+    public void openTiedot(){
+        Intent intentTiedot = new Intent(this, TiedotActivity.class);
+        startActivity(intentTiedot);
     }
 }
 

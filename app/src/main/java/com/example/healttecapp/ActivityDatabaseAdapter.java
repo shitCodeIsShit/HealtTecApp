@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ActivityDatabaseAdapter {
@@ -306,6 +307,25 @@ public class ActivityDatabaseAdapter {
         }
 
         return totallPoints;
+    }
+
+    // Gets all the total_points from data base and adds them to a Arraylist and returns it
+    public static ArrayList getAllTotalPoints(){
+
+        ArrayList totallPoints = new ArrayList();
+        String query = "SELECT * FROM " + TABLE_NAME;
+
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToNext()){
+            do {
+                totallPoints.add(cursor.getInt(5));
+            }while (cursor.moveToNext());
+        }
+
+        return totallPoints;
+
     }
 
 }
