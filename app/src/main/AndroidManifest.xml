@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TiedotActivity"></activity>
+        <activity android:name=".INFOActivity"></activity>
+        <activity android:name=".TiedotActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainKelloActivity"></activity>
-        <activity android:name=".MainUrheiluActivity"></activity>
-        <activity android:name=".AddFoodMenyActivity"></activity>
+        <activity android:name=".MainKelloActivity" />
+        <activity android:name=".MainUrheiluActivity" />
+        <activity android:name=".AddFoodMenyActivity" />
     </application>
 
 </manifest>

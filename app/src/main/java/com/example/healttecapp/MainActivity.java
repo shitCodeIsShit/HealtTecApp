@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button2;
     private Button button4;
     private Button button5;
+    private Button InfoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 openTiedot();
             }
         });
+        InfoButton = findViewById(R.id.InfoButton);
+        InfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInfo();
+            }
+        });
 
 
     }
@@ -78,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
     public void openTiedot(){
         Intent intentTiedot = new Intent(this, TiedotActivity.class);
         startActivity(intentTiedot);
+    }
+
+    public void openInfo() {
+        Intent intentInfo = new Intent(this, INFOActivity.class);
+        startActivity(intentInfo);
     }
 }
 
