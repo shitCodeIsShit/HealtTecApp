@@ -45,7 +45,7 @@ public class MainUrheiluActivity extends AppCompatActivity {
         TallennaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityDatabaseAdapter.insertSleepScore(moro);
+                ActivityDatabaseAdapter.insertActivityScore(moro);
             }
         });
 
