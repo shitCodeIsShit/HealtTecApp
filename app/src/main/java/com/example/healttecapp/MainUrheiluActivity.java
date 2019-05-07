@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -27,7 +26,7 @@ public class MainUrheiluActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textViewUrheiluArvo.setText(String.valueOf(progress+1));
+                textViewUrheiluArvo.setText(String.valueOf(progress + 1));
             }
 
             @Override
@@ -42,8 +41,6 @@ public class MainUrheiluActivity extends AppCompatActivity {
         });
 
 
-
-
         PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +48,8 @@ public class MainUrheiluActivity extends AppCompatActivity {
             }
         });
 
-        }
+    }
+
 
 
     public void openMainActivity() {

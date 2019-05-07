@@ -51,7 +51,7 @@
         android:layout_marginRight="13dp"
         android:layout_marginBottom="166dp"
         android:padding="23sp"
-        android:text="@string/PeruutaButtonUrheilu"
+        android:text="PALAA"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/TallennaButtonUrheilu"
