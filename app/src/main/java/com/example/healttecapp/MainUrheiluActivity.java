@@ -26,7 +26,7 @@ public class MainUrheiluActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textViewUrheiluArvo.setText(String.valueOf(progress+1));
+                textViewUrheiluArvo.setText(String.valueOf(progress + 1));
             }
 
             @Override
@@ -40,16 +40,6 @@ public class MainUrheiluActivity extends AppCompatActivity {
             }
         });
 
-        String arvo = textViewUrheiluArvo.toString();
-
-        final int arvonumerona = Integer.parseInt(arvo);
-
-        TallennaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ActivityDatabaseAdapter.insertActivityScore(arvonumerona);
-            }
-        });
 
         PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,11 +48,19 @@ public class MainUrheiluActivity extends AppCompatActivity {
             }
         });
 
-        }
+    }
+
 
 
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void lisaaUrheiluArvot(View v){
+        SeekBar seekBar = findViewById(R.id.SeekBarUrheilu);
+        int arvo;
+        arvo = seekBar.getProgress()+1;
+        ActivityDatabaseAdapter.insertActivityScore(arvo);
     }
 }
