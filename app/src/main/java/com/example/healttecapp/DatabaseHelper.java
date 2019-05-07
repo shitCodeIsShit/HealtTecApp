@@ -17,6 +17,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(ActivityDatabaseAdapter.DATABASE_CREATE);
+            db.execSQL("INSERT INTO activityStats (days_food_score) VALUES (0);");
+
         }catch(Exception er){
             Log.e("Error","exception");
 

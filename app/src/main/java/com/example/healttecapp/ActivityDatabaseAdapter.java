@@ -22,8 +22,8 @@ public class ActivityDatabaseAdapter {
 
     static final String DATABASE_CREATE = "CREATE TABLE "
             + TABLE_NAME + " ( " + ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-            + TIMESTAMP + " TIMESTAMP NOT NULL DEFAULT current_timestamp,"
+            + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
+            + TIMESTAMP + " TIMESTAMP NOT NULL DEFAULT current_timestamp, "
             + ACTIVITY_SCORE + " INTEGER, "
             + SLEEP_SCORE + " INTEGER, "
             + DAYS_FOOD_SCORE + " INTEGER, "
