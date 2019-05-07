@@ -100,6 +100,8 @@ public class ActivityDatabaseAdapter {
         // Check if adding day is some as last day database
         if (checkIfDayIsSome()) {
 
+            System.out.println("----------------" + score + "-----------------SCORE!!!");
+
             String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
 
             db = dbHelper.getReadableDatabase();
@@ -115,9 +117,13 @@ public class ActivityDatabaseAdapter {
                 } while (cursor.moveToNext());
             }
 
+            System.out.println("----------------" + asd + "-----------------ASD!!!");
+
             if (asd.trim().equals("null")) {
                 ContentValues contentValues = new ContentValues();
-                contentValues.put(ACTIVITY_SCORE, score);
+                contentValues.put(SLEEP_SCORE, score);
+
+                System.out.println("----------------" + "-----------------hei olemme oikeassa paikassa");
 
                 // Adding also score to total points
                 addToTotalPoints(score);
@@ -225,9 +231,10 @@ public class ActivityDatabaseAdapter {
             }else {
 
                 int curentTotallPoints = Integer.parseInt(asd);
+                curentTotallPoints += points;
 
                 ContentValues contentValues = new ContentValues();
-                contentValues.put(TOTAL_POINTS, (points + curentTotallPoints));
+                contentValues.put(TOTAL_POINTS, curentTotallPoints);
 
                 db = dbHelper.getWritableDatabase();
                 long result = db.update(TABLE_NAME, contentValues, id, null);
