@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import static com.example.healttecapp.ActivityDatabaseAdapter.*;
+import static com.example.healttecapp.R.id.textViewUrheiluArvo;
+
 
 public class MainUrheiluActivity extends AppCompatActivity {
 
@@ -40,29 +43,42 @@ public class MainUrheiluActivity extends AppCompatActivity {
             }
         });
 
-        String arvo = textViewUrheiluArvo.toString();
-
-        final int arvonumerona = Integer.parseInt(arvo);
+        final int moro = seekBar.getProgress()+1;
 
         TallennaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityDatabaseAdapter.insertActivityScore(arvonumerona);
+                ActivityDatabaseAdapter.insertSleepScore(moro);
             }
         });
 
-        PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMainActivity();
-            }
-        });
+
+
+          PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+
+                          Intent intent = new Intent(MainUrheiluActivity.this, MainActivity.class);
+                  MainUrheiluActivity.this.startActivity(intent);
+              }
+          });
 
         }
 
-
-    public void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
