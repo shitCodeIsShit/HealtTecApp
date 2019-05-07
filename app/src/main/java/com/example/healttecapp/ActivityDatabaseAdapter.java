@@ -61,6 +61,8 @@ public class ActivityDatabaseAdapter {
         // Check if adding day is some as last day database
         if (checkIfDayIsSome()) {
 
+            score = score * 2;
+
             String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
 
             db = dbHelper.getReadableDatabase();
@@ -99,6 +101,8 @@ public class ActivityDatabaseAdapter {
 
         // Check if adding day is some as last day database
         if (checkIfDayIsSome()) {
+
+            score = score * 3;
 
             System.out.println("----------------" + score + "-----------------SCORE!!!");
 
@@ -286,6 +290,22 @@ public class ActivityDatabaseAdapter {
         // Tip! There is a +1 on month because calendar maths start at 0 and dbMonth dose not
         return curentTime.get(Calendar.YEAR) == year && (curentTime.get(Calendar.MONTH) + 1) == month && curentTime.get(Calendar.DATE) == day;
 
+    }
+
+    public static int getTotallPoints(){
+        int totallPoints = 0;
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
+
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToNext()) {
+            do {
+                totallPoints = cursor.getInt(5);
+            } while (cursor.moveToNext());
+        }
+
+        return totallPoints;
     }
 
 }

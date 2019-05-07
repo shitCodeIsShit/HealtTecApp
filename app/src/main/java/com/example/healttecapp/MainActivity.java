@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityDatabaseAdapter activityDatabaseAdapter;
+    private ImageView paaUkko;
     private Button button3;
     private Button button2;
     private Button button4;
@@ -21,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         activityDatabaseAdapter = new ActivityDatabaseAdapter(getApplicationContext());
+
+        paaUkko = findViewById(R.id.maskotti);
+        PisteLaskuri p = new PisteLaskuri();
+        paaUkko = p.mikaMaskotti(paaUkko);
 
         button2 = findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
