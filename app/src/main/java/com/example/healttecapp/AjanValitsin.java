@@ -28,3 +28,7 @@ public class AjanValitsin extends DialogFragment {
         return new TimePickerDialog(getActivity(), (TimePickerDialog.OnTimeSetListener) getActivity(), tunti, minuutti, android.text.format.DateFormat.is24HourFormat(getActivity()) );
     }
 }
+/*
+* Kiitokset tälle sivustolle dialogin luomiseen https://codinginflow.com/tutorials/android/timepickerdialog
+* Koodi lainattu suoraan.
+ */

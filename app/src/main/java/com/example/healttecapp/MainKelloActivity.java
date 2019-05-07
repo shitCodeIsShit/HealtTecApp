@@ -57,7 +57,7 @@ public double minuutit;
         TextView textView = findViewById(R.id.textView);
         textView.setText("Tunteja: " + tunnit + " Minuutteja: " + minuutit);
 
-        /** Pyöristetään tunti+minuutti määrä tasatunteihin ja tarkistetaan minkä pisteen saa kyseisellä tuntimäärällä
+        /* Pyöristetään tunti+minuutti määrä tasatunteihin ja tarkistetaan minkä pisteen saa kyseisellä tuntimäärällä
          *
          */
         this.minuutit = minuutit / 60.0;
@@ -92,5 +92,10 @@ public double minuutit;
     }
 
 }
+
+/*
+ * Kiitokset tälle sivustolle https://codinginflow.com/tutorials/android/timepickerdialog
+ * Lainattu koodia, mutta lisätty myös omaa.
+ */
 
 
