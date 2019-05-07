@@ -2,6 +2,7 @@ package com.example.healttecapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -195,34 +196,46 @@ public class ActivityDatabaseAdapter {
     public static void addToTotalPoints(int points) {
 
         // Check if adding day is some as last day database
+        if(checkIfDayIsSome()) {
 
 
-        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
+            String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
 
-        db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
+            db = dbHelper.getReadableDatabase();
+            Cursor cursor = db.rawQuery(query, null);
 
-        String asd = "";
-        String id = ID + "=";
+            String asd = "";
+            String id = ID + "=";
 
-        if (cursor.moveToNext()) {
-            do {
-                id += cursor.getString(0);
-                asd += cursor.getString(5);
-            } while (cursor.moveToNext());
+            if (cursor.moveToNext()) {
+                do {
+                    id += cursor.getString(0);
+                    asd += cursor.getString(5);
+                } while (cursor.moveToNext());
+            }
+
+            if (asd.trim().equals("null")) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(TOTAL_POINTS, points);
+
+                // Inserting row to a table
+                db = dbHelper.getWritableDatabase();
+                long result = db.update(TABLE_NAME, contentValues, id, null);
+                db.close();
+            }else {
+
+                int curentTotallPoints = Integer.parseInt(asd);
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(TOTAL_POINTS, (points + curentTotallPoints));
+
+                db = dbHelper.getWritableDatabase();
+                long result = db.update(TABLE_NAME, contentValues, id, null);
+                db.close();
+            }
+
+            cursor.close();
         }
-
-        if (asd.trim().equals("null")) {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(ACTIVITY_SCORE, points);
-
-            // Inserting row to a table
-            db = dbHelper.getWritableDatabase();
-            long result = db.update(TABLE_NAME, contentValues, id, null);
-            db.close();
-        }
-
-        cursor.close();
 
 
     }
@@ -264,7 +277,7 @@ public class ActivityDatabaseAdapter {
 
         // Last but not least you check that the day is some as db.Day
         // Tip! There is a +1 on month because calendar maths start at 0 and dbMonth dose not
-        return curentTime.get(Calendar.YEAR) == year && curentTime.get(Calendar.MONTH) + 1 == month && curentTime.get(Calendar.DATE) == day;
+        return curentTime.get(Calendar.YEAR) == year && (curentTime.get(Calendar.MONTH) + 1) == month && curentTime.get(Calendar.DATE) == day;
 
     }
 
