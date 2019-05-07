@@ -47,16 +47,16 @@ int minuutit;
         this.minuutit = minuutit / 60;
         this.aika = this.tunnit + this.minuutit;
         this.aika2 = Math.round(this.tunnit + this.minuutit);
-        if(this.aika2 >= 0 && this.aika2 <= 5){
+        if(this.aika2 >= 0 && this.aika2 < 5){
             this.aika2 = 1;
         }
-        if(this.aika2 > 5 && this.aika2 < 7 ){
+        if(this.aika2 >= 5 && this.aika2 < 7 ){
             this.aika2 = 3;
         }
-        if(this.aika2 > 7 && this.aika2 < 9 ){
+        if(this.aika2 >= 7 && this.aika2 < 9 ){
             this.aika2 = 5;
         }
-        if(this.aika2 > 9 && this.aika2 < 11){
+        if(this.aika2 >= 9 && this.aika2 < 11){
             this.aika = 4;
         }else{
             this.aika2 = 2;
