@@ -13,10 +13,12 @@ import android.widget.TimePicker;
 
 
 public class MainKelloActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
-double aika;
+
+public double jako;
 public int aika2;
-int tunnit;
-int minuutit;
+public int tunnit;
+public double minuutit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +45,25 @@ int minuutit;
     public void onTimeSet(TimePicker view, int tunnit, int minuutit) {
         TextView textView = findViewById(R.id.textView);
         textView.setText("Tunteja: " + tunnit + " Minuutteja: " + minuutit);
-        this.tunnit = tunnit;
-        this.minuutit = minuutit / 60;
-        this.aika = this.tunnit + this.minuutit;
-        this.aika2 = Math.round(this.tunnit + this.minuutit);
-        if(this.aika2 >= 0 && this.aika2 < 5){
-            this.aika2 = 1;
-        }
-        if(this.aika2 >= 5 && this.aika2 < 7 ){
-            this.aika2 = 3;
-        }
-        if(this.aika2 >= 7 && this.aika2 < 9 ){
-            this.aika2 = 5;
-        }
-        if(this.aika2 >= 9 && this.aika2 < 11){
-            this.aika = 4;
-        }else{
-            this.aika2 = 2;
+        this.minuutit = minuutit / 60.0;
+        this.jako = Math.round(this.minuutit);
+        int i = (int)jako;
+        this.aika2 = tunnit + i;
+
+
+
+        System.out.println("--------------" + this.aika2 + "------------");
+
+        if(aika2 >= 0 && aika2 < 5) {
+            aika2 = 1;
+        } else if (aika2 >=5 && aika2 < 7){
+            aika2 = 3;
+        } else if (aika2 >=7 && aika2 < 9){
+            aika2 = 5;
+        } else if (aika2 >= 9 && aika2 < 11){
+            aika2 = 4;
+        } else {
+            aika2 = 2;
         }
 
 
