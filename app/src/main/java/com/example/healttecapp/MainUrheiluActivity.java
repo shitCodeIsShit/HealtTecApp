@@ -14,10 +14,14 @@ import static com.example.healttecapp.R.id.textViewUrheiluArvo;
 
 public class MainUrheiluActivity extends AppCompatActivity {
 
+    int tallennettavaArvo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_urheilu);
+
+        tallennettavaArvo = 0;
 
         SeekBar seekBar;
         seekBar = findViewById(R.id.SeekBarUrheilu);
@@ -29,7 +33,8 @@ public class MainUrheiluActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textViewUrheiluArvo.setText(String.valueOf(progress+1));
+                textViewUrheiluArvo.setText(String.valueOf(progress + 1));
+                tallennettavaArvo = progress + 1;
             }
 
             @Override
@@ -43,29 +48,27 @@ public class MainUrheiluActivity extends AppCompatActivity {
             }
         });
 
-        final int moro = seekBar.getProgress()+1;
 
         TallennaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityDatabaseAdapter.insertActivityScore(moro);
+                ActivityDatabaseAdapter.insertActivityScore(tallennettavaArvo);
             }
         });
 
 
+        PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-          PeruutaButtonUrheilu.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-
-                          Intent intent = new Intent(MainUrheiluActivity.this, MainActivity.class);
-                  MainUrheiluActivity.this.startActivity(intent);
-              }
-          });
-
-        }
+                Intent intent = new Intent(MainUrheiluActivity.this, MainActivity.class);
+                MainUrheiluActivity.this.startActivity(intent);
+            }
+        });
 
     }
+
+}
 
 
 
