@@ -12,8 +12,13 @@ import java.util.Calendar;
 
 public class ActivityDatabaseAdapter {
 
+    /**
+     * @author Valtteri Mäntymäki
+     */
+
     public static String DATABASE_NAME = "stats.db";
     private static final int DATABASE_VERSION = 1;
+
     static final String TABLE_NAME = "activityStats";
     private static final String ID = "_id";
     private static final String TIMESTAMP = "day";
@@ -22,6 +27,7 @@ public class ActivityDatabaseAdapter {
     private static final String DAYS_FOOD_SCORE = "days_food_score";
     private static final String TOTAL_POINTS = "total_points";
 
+    // Pää tietokannan luonti lause
     static final String DATABASE_CREATE = "CREATE TABLE "
             + TABLE_NAME + " ( " + ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "
@@ -32,13 +38,13 @@ public class ActivityDatabaseAdapter {
             + TOTAL_POINTS + " INTEGER "
             + ");";
 
-    // Variable to hold the database instance
+    // Muuttuja joka pitää tietokannan instanssia
     public static SQLiteDatabase db;
 
-    // Context of the application using the database.
+    // Ohjelman contexti joka käyttää tietokantaa
     private final Context context;
 
-    // Database open/upgrade helper
+    // Tietokannan open/upgrade auttaja
     private static DatabaseHelper dbHelper;
 
     public ActivityDatabaseAdapter(Context _context) {
@@ -46,17 +52,22 @@ public class ActivityDatabaseAdapter {
         dbHelper = new DatabaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    // Method to open the Database
+    // Avaa yhteyden tietokantaan
     public ActivityDatabaseAdapter open() throws SQLException {
         db = dbHelper.getWritableDatabase();
         return this;
     }
 
-    // method returns an Instance of the Database
+    // Palauttaa tietokannan instancin
     public SQLiteDatabase getDatabaseInstance() {
         return db;
     }
 
+
+    /**
+     * Asettaa sille annetun tiedon kantaan kohtaan act_score.
+     * @param score pistemäärä joka halutaan tallentaa. 1 - 5 väliltä
+     */
     public static void insertActivityScore(int score) {
 
         // Check if adding day is some as last day database
@@ -98,6 +109,10 @@ public class ActivityDatabaseAdapter {
 
     }
 
+    /**
+     * Asettaa sille annetun intin kantaan sleep_score kohtaan
+     * @param score pistemäärä joka halutaan tallentaa. 1 - 5 väliltä
+     */
     public static void insertSleepScore(int score) {
 
         // Check if adding day is some as last day database
@@ -145,6 +160,10 @@ public class ActivityDatabaseAdapter {
 
     }
 
+    /**
+     Asettaa sille annetun intin kantaan sleep_score kohtaan
+     * @param score pistemäärä joka halutaan tallentaa. 1 - 5 väliltä
+     */
     public static void insertFoodScore(int score) {
 
         if (checkIfDayIsSome()) {
@@ -202,8 +221,12 @@ public class ActivityDatabaseAdapter {
 
     }
 
-    // Method is used to add your points to total points column
-    // so you can get it later
+
+    /**
+     * Kutsutaan aktiivisuutta, nukkumista ja ruoka pisteitä lisätessä. Lisää jokaisesta saamansa
+     * pisteet tietokantaan kohtaan total_points.
+     * @param points pisteet jotka tallennetaan kantaan
+     */
     public static void addToTotalPoints(int points) {
 
         // Check if adding day is some as last day database
@@ -255,18 +278,25 @@ public class ActivityDatabaseAdapter {
     // This method will compare last index from the database and get the timestamp from it
     // and then compare that timestamp to current date
     // if year, month, and day are some as today it will return true, else false
+
+    /**
+     * Vertaa tietokannasta viimmeisenä olevaa päivä arvoa tähän päivään. Jos päivä on on sama
+     * palauttaa true muuten false. Metodin tarkoitus on varmistaa että kantaan voi yhdelle
+     * riville lisätä vain kerran päivässä asioita. Paitsi days_food_score:a
+     * @return true jos tämäpäivä = kannan viimmeinen päivä / false jos näin ei ole
+     */
     public static Boolean checkIfDayIsSome() {
 
-        // Getting the last day in the query
+        // Haetaan kannasta vika päivä
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
 
         db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
-        // Creating a variable to put the db date
+        // Luodaan muuttuja johon tallennetaan kannan päivä
         String first = null;
 
-        // Getting the date from cursor
+        // Käydään kursor läpi että saadaan haluttu arvo
         if (cursor.moveToNext()) {
             do {
                 first = cursor.getString(1);
@@ -277,22 +307,26 @@ public class ActivityDatabaseAdapter {
 
         cursor.close();
 
-        // Making time variables from database date
+        // Tehdään muttujat tietokannan ajan vertausta varten
         int year = Integer.parseInt(first.substring(0, 4));
         int month = Integer.parseInt(first.substring(6, 7));
         int day = Integer.parseInt(first.substring(9, 10));
 
         System.out.println("year: " + year + " month: " + month + " day: " + day);
 
-        // Init calendar to compare it db.time
+        // Luodaan kalenteri josta saadaan tämän päivän tiedot
         Calendar curentTime = Calendar.getInstance();
 
-        // Last but not least you check that the day is some as db.Day
-        // Tip! There is a +1 on month because calendar maths start at 0 and dbMonth dose not
+        // Ja lopulta verrataan tätäpäivää tietokannan päivään
+        // Vinkki! Kalenterissa on + 1 kuukauden kohfalla koska kalenteri alkaa 0. (tulee error)
         return curentTime.get(Calendar.YEAR) == year && (curentTime.get(Calendar.MONTH) + 1) == month && curentTime.get(Calendar.DATE) == day;
 
     }
 
+    /**
+     * Hakee kannasta viimmeisimmän päivän kokonais pisteet
+     * @return vimmeisimmän total_pointsin
+     */
     public static int getTotallPoints(){
         int totallPoints = 0;
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = (SELECT MAX(" + ID + ") FROM " + TABLE_NAME + ");";
@@ -309,7 +343,10 @@ public class ActivityDatabaseAdapter {
         return totallPoints;
     }
 
-    // Gets all the total_points from data base and adds them to a Arraylist and returns it
+    /**
+     * Hakee kannasta kaikki total_points:sit ja palauttaa ne Arraylistana
+     * @return total_pointsit arraylistana
+     */
     public static ArrayList getAllTotalPoints(){
 
         ArrayList totallPoints = new ArrayList();
@@ -330,8 +367,7 @@ public class ActivityDatabaseAdapter {
 
 }
 
-/*
- * Big thanks to this site! Most of the Database parts and controls are from here
- * methods that have to do with inserting data and such are mine
+/* Iso kiitos tälle sivustolle. Sain paljon hyviä vinkkejä miten kanta luodaan yms.
+ * Osa koodista on suoraan sivulta mutta suurin osa metodeista on omia
  * https://www.freakyjolly.com/android-sqlite-example-application-insert-update-delete-truncate-operations/
  * */

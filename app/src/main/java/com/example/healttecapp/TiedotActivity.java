@@ -24,6 +24,10 @@ public class TiedotActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Asetetaan buttonille mahdollisuus palata päävalikkoon
+     * @param view yleis View että voi yhdistää buttoniin?
+     */
     public void getBackToMainMenu(View view) {
         Intent backHome = new Intent(TiedotActivity.this, MainActivity.class);
         TiedotActivity.this.startActivity(backHome);

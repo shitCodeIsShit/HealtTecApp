@@ -13,6 +13,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+
+    /**
+     * Luo tietokannan tietokannan luontilauseella jonka se saa ActivituAdabter luokasta
+     * lisää myös yhden nolla arvon luotuun tauluun ettei taulu ole kokonaan tyhjä
+     * @param db tietokanta jonka avulla luodaan kanta
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
@@ -25,6 +31,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Poistaa vanhan tietokannan ja luo uuden
+     * @param db nykyinen kanta
+     * @param oldVersion vanhankannan numero
+     * @param newVersion uuden kannan numero
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         {

@@ -9,11 +9,14 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddFoodMenyActivity extends AppCompatActivity {
+
+    /**
+     * @author Valtteri Mäntymäki
+     */
 
     private Button saveButton;
     private Spinner healthynesScale;
@@ -24,7 +27,7 @@ public class AddFoodMenyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_food_meny);
 
 
-        // Creating first spinner
+        // Luodaan ruuan valinta spinneri
         Spinner foodSpinner = findViewById(R.id.eatingTimeSpinner);
 
         final List<String> eatingTime = new ArrayList<String>();
@@ -39,7 +42,7 @@ public class AddFoodMenyActivity extends AppCompatActivity {
         foodSpinner.setAdapter(dataAdapter);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // Creating the second spinner
+        // Luodaan ruuan terveellisyys arvo spinner
         healthynesScale = findViewById(R.id.scaleOfHealthynes);
 
         final List<Integer> scale = new ArrayList<>();
@@ -57,19 +60,20 @@ public class AddFoodMenyActivity extends AppCompatActivity {
 
     }
 
-    public void insertSpinnerData(View v){
+    /**
+     * Asettaa buttonille annetun datan kantaan
+     * @param v yleis View että voi yhdistää buttoniin?
+     */
+    public void insertSpinnerData(View v) {
         Spinner sp = findViewById(R.id.scaleOfHealthynes);
 
         System.out.println("-------------------" + sp.getSelectedItem() + "---selecteditem-------");
-        ActivityDatabaseAdapter.insertFoodScore((int)sp.getSelectedItem());
+        ActivityDatabaseAdapter.insertFoodScore((int) sp.getSelectedItem());
 
         Intent backHome = new Intent(AddFoodMenyActivity.this, MainActivity.class);
         AddFoodMenyActivity.this.startActivity(backHome);
 
     }
 
-    public void agasfg(View v){
-        ActivityDatabaseAdapter.checkIfDayIsSome();
-    }
 
 }
