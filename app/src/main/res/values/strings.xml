@@ -9,4 +9,11 @@
                                  5=Erittäin paljon liikkumista</string>
     <string name="TextViewProgress">jokuarvo</string>
     <string name="aika">Aika</string>
-</resources>
+    <string name="infoteksti"> \n<br>
+    </br> Alle 10 pistettä: Vielä voit parantaa reilusti
+        \n<br> \n 10-19 pistettä: Parannettavaa löytyy, mutta suunta on oikea! </br>
+        \n<br> \n 20-29 pistettä: Ihan hyvin menee! </br>
+        \n<br> \n 30-39 pistettä: Loistavasti menee! </br>
+        \n \n Yli 40 pistettä: Mahtavaa!</string>
+
+ </resources>
